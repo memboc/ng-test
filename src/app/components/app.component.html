@@ -1,0 +1,32 @@
+<header>
+  <div class="logo" title="{{mainPage.title}}"></div>
+  <nav>
+    <ul>
+      <li>
+        <a routerLink="/" routerLinkActive="active">Home</a>
+      </li>
+      <li>
+        <a routerLink="/tasks" routerLinkActive="active">Tasks</a>
+      </li>
+      <li>
+        <a routerLink="/sources" routerLinkActive="active">Sources</a>
+      </li>
+      <li>
+        <a routerLink="/about" routerLinkActive="active">About</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<section id="main">
+  <!--<app-homepage-->
+    <!--[breadcrumbs]="breadcrumbs"-->
+    <!--(onChangeMainTitle)="changeMainTitle($event)"-->
+  <!--&gt;Homepage directive content-->
+  <!--</app-homepage>-->
+
+  <router-outlet></router-outlet>
+</section>
+
+<footer>
+  (c) 2017
+</footer>

@@ -1,0 +1,11 @@
+<p [ngClass]="{'active': checked}">
+  about works!
+</p>
+<p>
+  <label><input type="checkbox" [(ngModel)]="checked"> Check</label>
+</p>
+
+<div class="tasks-wrapper" *ngIf="checked">
+  <h2>Hello!</h2>
+  <p>About us!</p>
+</div>

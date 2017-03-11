@@ -1,0 +1,25 @@
+<p>
+  tasks works!
+</p>
+
+<div class="tasks-wrapper">
+  <h2>Tasks:</h2>
+
+  <form>
+    <label>Search: <input type="text" name="queryFilter" [(ngModel)]="queryFilter"></label>
+  </form>
+
+  <ul class="tasks">
+    <li class="task" *ngFor="let task of tasks | filter:queryFilter:'name' ">
+      <h3>{{task.name | uppercase }}</h3>
+      <p>{{task.info}}</p>
+      <div class="del"><button (click)="deleteTask(task.name)" [attr.data-name]="task.name">remove</button></div>
+    </li>
+  </ul>
+
+  <form>
+    <p><input [(ngModel)]="taskName" type="text" name="taskName" placeholder="Task name"></p>
+    <p><textarea [(ngModel)]="taskMessage" name="taskMessage" cols="30" rows="10" placeholder="Info..."></textarea></p>
+    <p><input type="button" value="Add new" (click)="addTask($event)"></p>
+  </form>
+</div>
