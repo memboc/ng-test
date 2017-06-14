@@ -27,7 +27,7 @@ import { TasksComponent } from './components/tasks/tasks.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    APP_ROUTES_PROVIDER
+    APP_ROUTES_PROVIDER,
     // RouterModule.forRoot([
     //   { path: '', component: HomeComponent },
     //   { path: 'directory', component: DirectoryComponent },
