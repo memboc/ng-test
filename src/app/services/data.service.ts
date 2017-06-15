@@ -20,5 +20,8 @@ export class DataService {
       callback(snapshot.val())
     })
   }
+  public postDataFb(path, dataObj) {
+    firebase.database().ref(path).push(dataObj)
+  }
 
 }

@@ -49,10 +49,16 @@ export class TasksComponent implements OnInit {
   public addTask($e) {
     console.log('add',$e, this.tasks);
 
+    this.dataService.postDataFb('/', {
+      name: this.taskName,
+      info: this.taskMessage,
+    });
+/*
     this.tasks.push({
       name: this.taskName,
       info: this.taskMessage,
     });
+*/
 
     this.taskName = '';
     this.taskMessage = '';
