@@ -1,6 +1,7 @@
 import {Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef} from '@angular/core';
 import {MainLayoutService} from "../../services/main-layout.service";
 import {DataService} from "../../services/data.service";
+declare var firebase: any;
 
 @Component({
   selector: 'app-tasks',
@@ -13,7 +14,7 @@ import {DataService} from "../../services/data.service";
 export class TasksComponent implements OnInit {
 
   public title = 'Tasks';
-  public url = '/tasks.json';
+  public url = 'https://test-ang-13e81.firebaseio.com/.json';
 
   public taskName;
   public taskMessage;
@@ -32,11 +33,17 @@ export class TasksComponent implements OnInit {
 
   ngOnInit() {
     this.mainPage.changeTitle(this.title);
+    /*
     this.dataService.fetchData(this.url)
       .subscribe((tasks) => {
         this.tasks = tasks;
         this.cdr.markForCheck(); // Включение обновления состояний
       });
+  */
+    this.dataService.getDataFb('/', (taskObj) => {
+      this.tasks.push(taskObj);
+      this.cdr.markForCheck(); // Включение обновления состояний
+    });
   }
 
   public addTask($e) {
@@ -60,4 +67,9 @@ export class TasksComponent implements OnInit {
     this.tasks.splice(index, 1);
   }
 
+  public getDataFb() {
+    firebase.database().ref('/').on('child_added', (snapshot) => {
+      console.log(snapshot.val());
+    })
+  }
 }
