@@ -14,7 +14,7 @@ export class AppComponent {
   ];
 
   constructor(
-     private mainPage: MainLayoutService,
+     public mainPage: MainLayoutService,
      private firebaseProvider: FirebaseProvider
   ) {
     this.mainPage = mainPage;

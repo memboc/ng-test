@@ -20,7 +20,7 @@ export class TasksComponent implements OnInit {
   public taskMessage;
   public queryFilter;
 
-  private tasks: Observable<any[]>;
+  public tasks: Observable<any[]>;
 
 
   constructor(
