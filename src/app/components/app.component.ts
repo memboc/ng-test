@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MainLayoutService } from "../services/main-layout.service";
+import { FirebaseProvider } from "../providers/firebase.provider";
 
 @Component({
   selector: 'app-root',
@@ -12,14 +13,13 @@ export class AppComponent {
     'Main'
   ];
 
-  mainPage;
-
   constructor(
-     mainPage: MainLayoutService
+     private mainPage: MainLayoutService,
+     private firebaseProvider: FirebaseProvider
   ) {
     this.mainPage = mainPage;
+    firebaseProvider.loginAnon();
   }
-
 
   // changeMainTitle(e) {
   //   this.title = this.title + '*';

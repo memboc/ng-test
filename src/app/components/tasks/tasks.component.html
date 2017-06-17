@@ -10,10 +10,10 @@
   </form>
 
   <ul class="tasks">
-    <li class="task" *ngFor="let task of tasks | filter:queryFilter:'name' ">
+    <li *ngFor="let task of tasks | async | filter:queryFilter:'name'" class="task">
       <h3>{{task.name | uppercase }}</h3>
       <p>{{task.info}}</p>
-      <div class="del"><button (click)="deleteTask(task.name)" [attr.data-name]="task.name">remove</button></div>
+      <div class="del"><button (click)="deleteTask(task)" [attr.data-name]="task.name">remove</button></div>
     </li>
   </ul>
 

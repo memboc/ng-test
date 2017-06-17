@@ -9,9 +9,18 @@ import { AboutComponent } from './components/about/about.component';
 import { APP_ROUTES_PROVIDER } from './app.routes';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SourceListComponent } from './components/source-list/source-list.component';
-import { FilterPipe } from './pipes/filter.pipe';
-import { MainLayoutService } from "./services/main-layout.service";
 import { TasksComponent } from './components/tasks/tasks.component';
+
+import { FilterPipe } from './pipes/filter.pipe';
+import { KeysPipe } from "./pipes/keys.pipe";
+import { MainLayoutService } from "./services/main-layout.service";
+
+import { environment } from "../environments/environment";
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { FirebaseProvider } from "./providers/firebase.provider";
 
 @NgModule({
   declarations: [
@@ -20,8 +29,9 @@ import { TasksComponent } from './components/tasks/tasks.component';
     AboutComponent,
     PageNotFoundComponent,
     SourceListComponent,
+    TasksComponent,
     FilterPipe,
-    TasksComponent
+    KeysPipe,
   ],
   imports: [
     BrowserModule,
@@ -33,8 +43,11 @@ import { TasksComponent } from './components/tasks/tasks.component';
     //   { path: 'directory', component: DirectoryComponent },
     //   // { path: '**', component: PageNotFoundComponent }
     // ])
+    AngularFireModule.initializeApp(environment.config.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
   ],
-  providers: [MainLayoutService],
+  providers: [MainLayoutService, FirebaseProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
